@@ -21,7 +21,7 @@ app.use('/api/recipe', recipeRouter)
 
 export const start = async () => {
   try {
-    await connect()
+    await connect('mongodb://localhost:27017/meal-planner')
     app.listen(config.port, () => {
       console.log(`REST API on http://localhost:${config.port}/api`)
     })

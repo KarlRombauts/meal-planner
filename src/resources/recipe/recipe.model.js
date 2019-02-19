@@ -8,7 +8,7 @@ const recipe = new mongoose.Schema({
   },
   ingredients: [
     {
-      id: {
+      ingredient: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'ingredient'
@@ -18,8 +18,7 @@ const recipe = new mongoose.Schema({
         required: true
       },
       unit: {
-        type: String,
-        required: true
+        type: String
       }
     }
   ],
