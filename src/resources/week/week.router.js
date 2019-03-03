@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import controllers from './recipe.controller'
+import controllers from './week.controller'
 console.log(controllers)
 const router = Router()
 
@@ -16,14 +16,15 @@ router
   .put(controllers.updateOne)
   .delete(controllers.removeOne)
 
+router.route('/:id/:day').get(controllers.getDay)
 router
-  .route('/:id/ingredients')
-  .get(controllers.getManyIngredients)
-  .post(controllers.addIngredient)
+  .route('/:id/:day/:mealTime')
+  .get(controllers.getManyMeals)
+  .post(controllers.addMeal)
 
 router
-  .route('/:id/ingredients/:ingredientId')
-  .get(controllers.getOneIngredient)
-  .put(controllers.updateIngredient)
-  .delete(controllers.removeIngredient)
+  .route('/:id/:day/:mealTime/:mealId')
+  .get(controllers.getOneMeal)
+  .delete(controllers.removeMeal)
+
 export default router
