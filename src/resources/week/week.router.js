@@ -25,6 +25,7 @@ router
 router
   .route('/:id/:day/:mealTime/:mealId')
   .get(controllers.getOneMeal)
+  .put(controllers.updateMeal)
   .delete(controllers.removeMeal)
 
 export default router

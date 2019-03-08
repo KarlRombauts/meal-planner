@@ -99,5 +99,27 @@ export default {
       console.error(e)
       res.status(400).end()
     }
+  },
+  updateMeal: async (req, res) => {
+    const condition = { _id: req.params.id }
+    condition[`days.${req.params.day}.${req.params.mealTime}._id`] =
+      req.params.mealId
+
+    const updatedMealData = {}
+    updatedMealData[`days.${req.params.day}.${req.params.mealTime}.$`] =
+      req.body
+    try {
+      const doc = await Week.findOneAndUpdate(
+        condition,
+        { $set: updatedMealData },
+        { new: true }
+      ).exec()
+      res
+        .status(201)
+        .json({ data: doc.days[req.params.day][req.params.mealTime] })
+    } catch (e) {
+      console.error(e)
+      res.status(400).end()
+    }
   }
 }
