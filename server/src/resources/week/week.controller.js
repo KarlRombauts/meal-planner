@@ -4,6 +4,18 @@ import { Week } from './week.model'
 
 export default {
   ...crudControllers(Week),
+  getMany: async (req, res) => {
+    try {
+      const docs = await Week.find({})
+        .lean()
+        .exec()
+
+      res.status(200).json({ data: docs })
+    } catch (e) {
+      console.error(e)
+      res.status(400).end()
+    }
+  },
   getDay: async (req, res) => {
     try {
       const doc = await Week.findOne({ _id: req.params.id })

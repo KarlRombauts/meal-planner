@@ -6,7 +6,6 @@ import cors from 'cors'
 import { connect } from './utils/db'
 import ingredientRouter from './resources/ingredient/ingredient.router'
 import recipeRouter from './resources/recipe/recipe.router'
-import dayRouter from './resources/day/day.router'
 import weekRouter from './resources/week/week.router'
 
 export const app = express()
@@ -21,7 +20,6 @@ app.use(morgan('dev'))
 app.use('/api/ingredient', ingredientRouter)
 app.use('/api/recipe', recipeRouter)
 app.use('/api/week', weekRouter)
-app.use('/api/day', dayRouter)
 
 export const start = async () => {
   try {

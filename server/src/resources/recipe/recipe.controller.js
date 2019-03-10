@@ -18,7 +18,7 @@ export default {
   },
   getOne: async (req, res) => {
     try {
-      const docs = await Recipe.find({ _id: req.params.id })
+      const docs = await Recipe.findOne({ _id: req.params.id })
         .populate('ingredients.ingredient')
         .lean()
         .exec()
